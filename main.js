@@ -29,3 +29,28 @@ window.addEventListener('scroll', function(){
     header.classList.remove('scroll')
   }
 })
+
+// Testimonials carousel slider swiper
+const swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  mousewheel: true,
+  keyboard: true
+})
+
+// ScrollReveal: Show elements when scrolling on page
+const scrollReveal = ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 1000,
+  reset: true
+})
+
+scrollReveal.reveal(
+  `#home .text, #home .image,
+  #about .image, #about .text,
+  #services header, #services .card,
+  #testimonials header, #testimonials .testimonials,
+  #contact .text, #contact .links`, { interval: 100 })
