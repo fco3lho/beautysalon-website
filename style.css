@@ -6,28 +6,28 @@
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-img{
+img {
   width: 100%;
   height: auto;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
 /* VARIABLES */
 
-:root{
+:root {
   font-size: 100%; /* 16px */
   --header-height: 4.5rem;
 
   /* Colors */
   --hue: 235;
-  
+
   /* HSL color mode */
   --base-color: hsl(var(--hue), 36%, 57%);
   --base-color-second: hsl(var(--hue), 65%, 88%);
@@ -40,24 +40,24 @@ ul{
 
 /* ######################################################### BASE */
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-body{
-  font: 400 1rem "DM Sans", sans-serif;
+body {
+  font: 400 1rem 'DM Sans', sans-serif;
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
-.title{
-  font: 700 1.875rem "Poppins", sans-serif;
-  color:var(--title-color);
+.title {
+  font: 700 1.875rem 'Poppins', sans-serif;
+  color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
 
-.button{
+.button {
   background-color: var(--base-color);
   color: var(--text-color-light);
   height: 3.5rem;
@@ -65,15 +65,15 @@ body{
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem "DM Sans", sans-serif;
+  font: 500 1rem 'DM Sans', sans-serif;
   transition: background 0.5s;
 }
 
-.button:hover{
+.button:hover {
   background: var(--base-color-alt);
 }
 
-.divider-1{
+.divider-1 {
   height: 1px;
   background: linear-gradient(
     270deg,
@@ -82,7 +82,7 @@ body{
   );
 }
 
-.divider-2{
+.divider-2 {
   height: 1px;
   background: linear-gradient(
     270deg,
@@ -93,37 +93,37 @@ body{
 
 /* ######################################################### LAYOUT */
 
-.container{
+.container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
 
-.grid{
+.grid {
   display: grid;
   gap: 2rem;
 }
 
-.section{
+.section {
   padding: 5rem 0;
 }
 
-.section .title{
+.section .title {
   margin-bottom: 1rem;
 }
 
-.section header{
+.section header {
   margin-bottom: 4rem;
 }
 
-.section header strong{
+.section header strong {
   color: var(--base-color);
 }
 
-#header{
+#header {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
   display: flex;
-  
+
   position: fixed;
   top: 0;
   left: 0;
@@ -132,26 +132,26 @@ body{
   width: 100%;
 }
 
-#header.scroll{
+#header.scroll {
   background: var(--base-color);
   box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
 }
 
-#header.scroll .logo span{
+#header.scroll .logo span {
   color: #ffffff;
 }
 
-#header.scroll .icon-menu{
+#header.scroll .icon-menu {
   color: #ffffff;
 }
 
-main{
+main {
   margin-top: calc(var(--header-height) + 2rem);
 }
 
 /* ######################################################### NAVIGATION */
 
-nav{
+nav {
   height: var(--header-height);
   display: flex;
   align-items: center;
@@ -159,21 +159,21 @@ nav{
   width: 100%;
 }
 
-nav ul li{
+nav ul li {
   text-align: center;
 }
 
-nav ul li a{
+nav ul li a {
   transition: 0.5s;
   position: relative;
 }
 
-nav ul li a:hover{
-  color: var(--base-color)
+nav ul li a:hover {
+  color: var(--base-color);
 }
 
-nav ul li a::after{
-  content: "";
+nav ul li a::after {
+  content: '';
   width: 0%;
   height: 2px;
   background: var(--base-color);
@@ -185,24 +185,24 @@ nav ul li a::after{
   transition: width 0.5s;
 }
 
-nav ul li a:hover::after{
+nav ul li a:hover::after {
   width: 100%;
 }
 
-nav .menu{
+nav .menu {
   opacity: 0;
   visibility: hidden;
   top: -20rem;
   transition: 0.5s;
 }
 
-nav .menu ul{
+nav .menu ul {
   display: none;
 }
 
 /*######################################################### Mostrar menu */
 
-nav.show .menu{
+nav.show .menu {
   opacity: 1;
   visibility: visible;
 
@@ -218,22 +218,22 @@ nav.show .menu{
   place-content: center;
 }
 
-nav.show .menu ul{
+nav.show .menu ul {
   display: grid;
 }
 
-nav.show ul.grid{
+nav.show ul.grid {
   gap: 4rem;
 }
 
 /* ######################################################### TOGGLE MENU */
 
-.toggle{
+.toggle {
   color: var(--base-color);
   font-size: 1.5rem;
 }
 
-nav .icon-close{
+nav .icon-close {
   visibility: hidden;
   opacity: 0;
 
@@ -244,7 +244,7 @@ nav .icon-close{
   transition: 0.5s;
 }
 
-nav.show div.icon-close{
+nav.show div.icon-close {
   visibility: visible;
   opacity: 1;
   top: 1.5rem;
@@ -252,30 +252,34 @@ nav.show div.icon-close{
 
 /* ######################################################### LOGO */
 
-.logo{
-  font: 700 1.31rem "Poppins", sans-serif;
-  color:var(--title-color);
+.logo {
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
 }
 
-.logo span{
-  color:var(--base-color);
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt span {
+  color: var(--body-color);
 }
 
 /* ######################################################### HOME */
 
-#home{
+#home {
   overflow: hidden;
 }
 
-#home .container{
+#home .container {
   margin: 0;
 }
 
-#home .image{
+#home .image {
   position: relative;
 }
 
-#home .image::before{
+#home .image::before {
   content: '';
   height: 100%;
   width: 100%;
@@ -286,45 +290,45 @@ nav.show div.icon-close{
   z-index: 0;
 }
 
-#home .image img{
+#home .image img {
   position: relative;
-  right: 2.93rem;  
+  right: 2.93rem;
 }
 
 #home .image img,
-#home .image::before{
+#home .image::before {
   border-radius: 0.25rem;
 }
 
-#home .text{
+#home .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   text-align: center;
 }
 
-#home .text h1{
+#home .text h1 {
   margin-bottom: 1rem;
 }
 
-#home .text p{
+#home .text p {
   margin-bottom: 2rem;
 }
 
 /* ######################################################### ABOUT */
 
-#about{
+#about {
   background: #ffffff;
 }
 
-#about .container{
+#about .container {
   margin: 0;
 }
 
-#about .image{
+#about .image {
   position: relative;
 }
 
-#about .image::before{
+#about .image::before {
   content: '';
   height: 100%;
   width: 100%;
@@ -335,28 +339,28 @@ nav.show div.icon-close{
   z-index: 0;
 }
 
-#about .image img{
+#about .image img {
   position: relative;
   /* right: 2.93rem;   */
 }
 
 #about .image img,
-#about .image::before{
+#about .image::before {
   border-radius: 0.25rem;
 }
 
-#about .text{
+#about .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
 
 /* ######################################################### SERVICES */
 
-.cards.grid{
+.cards.grid {
   gap: 1.5rem;
 }
 
-.card{
+.card {
   padding: 3.625rem 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-bottom: 0.25rem solid var(--base-color);
@@ -371,42 +375,42 @@ nav.show div.icon-close{
   color: var(--base-color);
 }
 
-.card .title{
+.card .title {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
 /* ######################################################### TESTIMONIALS */
 
-#testimonials{
+#testimonials {
   background: #ffffff;
 }
 
-#testimonials .container{
+#testimonials .container {
   margin-left: 0;
   margin-right: 0;
 }
 
-#testimonials header{
+#testimonials header {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   margin-bottom: 0;
 }
 
-#testimonials blockquote{
+#testimonials blockquote {
   padding: 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-radius: 0.25rem;
 }
 
-#testimonials blockquote p{
+#testimonials blockquote p {
   position: relative;
   text-indent: 1.875rem;
   margin-bottom: 1.5rem;
   color: var(--title-color);
 }
 
-#testimonials blockquote p span{
+#testimonials blockquote p span {
   font: 700 3rem serif;
 
   position: absolute;
@@ -416,12 +420,12 @@ nav.show div.icon-close{
   color: var(--base-color);
 }
 
-#testimonials cite{
+#testimonials cite {
   display: flex;
   align-items: center;
 }
 
-#testimonials cite img{
+#testimonials cite img {
   width: 2rem;
   height: 2rem;
   object-fit: cover;
@@ -431,46 +435,120 @@ nav.show div.icon-close{
 
 /* SWIPER */
 
-.swiper-slide{
+.swiper-slide {
   height: auto;
   padding: 4rem 1rem;
 }
 
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   width: 0.75rem;
   height: 0.75rem;
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background: var(--base-color);
-
 }
 
 /* ######################################################### CONTACT */
 
-#contact .grid{
+#contact .grid {
   gap: 4rem;
 }
 
-#contact .text p{
+#contact .text p {
   margin-bottom: 2rem;
 }
 
 #contact .button i,
-#contact ul li i{
+#contact ul li i {
   font-size: 1.5rem;
   margin-right: 0.625rem;
 }
 
-#contact ul.grid{
+#contact ul.grid {
   gap: 2rem;
 }
 
-#contact ul li{
+#contact ul li {
   display: flex;
   align-items: center;
 }
 
-#contact ul li i{
+#contact ul li i {
   color: var(--base-color);
 }
+
+/* ######################################################### FOOTER */
+
+footer {
+  background: var(--base-color);
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: var(--text-color-light);
+  margin-bottom: 0.75rem;
+}
+
+footer i {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+}
+
+footer .social {
+  display: flex;
+}
+
+footer .social a{
+  transition: 0.5s;
+}
+
+footer .social a:hover{
+  transform: translateY(-7.5px);
+}
+
+/* ######################################################### BACK TO TOP */
+
+.back-to-top {
+  background: var(--base-color);
+  color: var(--text-color-light);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.5rem;
+  clip-path: circle();
+
+  font-size: 1.5rem;
+  line-height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.5s;
+  transform: translateY(100%);
+}
+
+.back-to-top.show{
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ######################################################### REPONSIVO */
+
+/* extra large devices: 1200 > */
+/* large devices: 1023 > */
+/* large devices: 992 > */
+@media (min-width: 992px) {
+
+}
+/* medium devices: 767 > */
+
+
+
