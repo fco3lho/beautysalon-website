@@ -21,14 +21,14 @@ for(const link of links){
 const header = document.querySelector('#header')
 const navHeight = header.offsetHeight
 
-window.addEventListener('scroll', function(){
+function changeHeaderWhenScroll(){
   if(window.scrollY >= navHeight){
     header.classList.add('scroll')
   }
   else{
     header.classList.remove('scroll')
   }
-})
+}
 
 // Testimonials carousel slider swiper
 const swiper = new Swiper('.swiper-container', {
@@ -37,14 +37,20 @@ const swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination'
   },
   mousewheel: true,
-  keyboard: true
+  keyboard: true,
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapperSize: true
+    }
+  }
 })
 
 // ScrollReveal: Show elements when scrolling on page
 const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 1000,
+  duration: 700,
   reset: true
 })
 
@@ -56,13 +62,47 @@ scrollReveal.reveal(
   #contact .text, #contact .links,
   footer .brand, footer .social`, { interval: 100 })
 
-  //Buttom back to top
-  const backToTopButton = document.querySelector('.back-to-top')
-  window.addEventListener('scroll', function(){
-    if(window.scrollY >= 560){
-      backToTopButton.classList.add('show')
+//Buttom back to top
+const backToTopButton = document.querySelector('.back-to-top')
+
+function backToTop(){
+  if(window.scrollY >= 560){
+    backToTopButton.classList.add('show')
+  }
+  else{
+    backToTopButton.classList.remove('show')
+  }
+}
+
+//Active menu as visible on the page
+const sections = document.querySelectorAll('main section[id]')
+
+function activateMenuAtCurrentSection(){
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
+
+  for(const section of sections){
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute('id')
+
+    const checkpointStart = checkpoint >= sectionTop
+    const checkpointEnd = checkpoint <= sectionTop + sectionHeight
+
+    if(checkpointStart && checkpointEnd){
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('active')
+    }else{
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.remove('active')
     }
-    else{
-      backToTopButton.classList.remove('show')
-    }
-  })
+  }
+}
+
+//Call functions
+window.addEventListener('scroll', function(){
+  changeHeaderWhenScroll()
+  backToTop()
+  activateMenuAtCurrentSection()
+})

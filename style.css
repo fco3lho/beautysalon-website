@@ -1,9 +1,12 @@
-/* RESET */
-
+/*====  RESET ============================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
 }
 
 a {
@@ -15,44 +18,43 @@ img {
   height: auto;
 }
 
-ul {
-  list-style: none;
-}
-
-/* VARIABLES */
-
+/*====  VARIABLES ============================ */
 :root {
-  font-size: 100%; /* 16px */
   --header-height: 4.5rem;
 
-  /* Colors */
+  /* colors */
   --hue: 235;
-
   /* HSL color mode */
-  --base-color: hsl(var(--hue), 36%, 57%);
-  --base-color-second: hsl(var(--hue), 65%, 88%);
-  --base-color-alt: hsl(var(--hue), 57%, 53%);
-  --title-color: hsl(var(--hue), 41%, 10%);
-  --text-color: hsl(0, 0%, 46%);
-  --text-color-light: hsl(0, 0%, 98%);
-  --body-color: hsl(0, 0%, 98%);
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+
+  /* fonts */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
 }
 
-/* ######################################################### BASE */
-
+/*===  BASE ============================ */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font: 400 1rem 'DM Sans', sans-serif;
+  font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
 .title {
-  font: 700 1.875rem 'Poppins', sans-serif;
+  font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -65,8 +67,8 @@ body {
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem 'DM Sans', sans-serif;
-  transition: background 0.5s;
+  font: 500 1rem var(--body-font);
+  transition: background 0.3s;
 }
 
 .button:hover {
@@ -91,8 +93,7 @@ body {
   );
 }
 
-/* ######################################################### LAYOUT */
-
+/*====  LAYOUT ============================ */
 .container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -104,11 +105,15 @@ body {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
   margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
 }
 
 .section header {
@@ -133,24 +138,24 @@ body {
 }
 
 #header.scroll {
-  background: var(--base-color);
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 
-#header.scroll .logo span {
-  color: #ffffff;
+/*====  LOGO ============================ */
+.logo {
+  font: 700 1.31rem var(--title-font);
+  color: var(--title-color);
 }
 
-#header.scroll .icon-menu {
-  color: #ffffff;
+.logo span {
+  color: var(--base-color);
 }
 
-main {
-  margin-top: calc(var(--header-height) + 2rem);
+.logo-alt span {
+  color: var(--body-color);
 }
 
-/* ######################################################### NAVIGATION */
-
+/*====  NAVIGATION ============================ */
 nav {
   height: var(--header-height);
   display: flex;
@@ -164,11 +169,12 @@ nav ul li {
 }
 
 nav ul li a {
-  transition: 0.5s;
+  transition: color 0.2s;
   position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--base-color);
 }
 
@@ -180,12 +186,13 @@ nav ul li a::after {
 
   position: absolute;
   left: 0;
-  bottom: -0.5rem;
+  bottom: -1.5rem;
 
-  transition: width 0.5s;
+  transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 
@@ -193,20 +200,20 @@ nav .menu {
   opacity: 0;
   visibility: hidden;
   top: -20rem;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 nav .menu ul {
   display: none;
 }
 
-/*######################################################### Mostrar menu */
-
+/* Mostrar menu */
 nav.show .menu {
   opacity: 1;
   visibility: visible;
 
   background: var(--body-color);
+
   height: 100vh;
   width: 100vw;
 
@@ -226,11 +233,11 @@ nav.show ul.grid {
   gap: 4rem;
 }
 
-/* ######################################################### TOGGLE MENU */
-
+/* toggle menu */
 .toggle {
   color: var(--base-color);
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 nav .icon-close {
@@ -241,7 +248,7 @@ nav .icon-close {
   top: -1.5rem;
   right: 1.5rem;
 
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 nav.show div.icon-close {
@@ -250,23 +257,7 @@ nav.show div.icon-close {
   top: 1.5rem;
 }
 
-/* ######################################################### LOGO */
-
-.logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
-  color: var(--title-color);
-}
-
-.logo span {
-  color: var(--base-color);
-}
-
-.logo-alt span {
-  color: var(--body-color);
-}
-
-/* ######################################################### HOME */
-
+/*====  HOME ============================ */
 #home {
   overflow: hidden;
 }
@@ -286,7 +277,7 @@ nav.show div.icon-close {
   background: var(--base-color-second);
   position: absolute;
   top: -16.8%;
-  left: 16.8%;
+  left: 16.7%;
   z-index: 0;
 }
 
@@ -314,10 +305,9 @@ nav.show div.icon-close {
   margin-bottom: 2rem;
 }
 
-/* ######################################################### ABOUT */
-
+/*====  ABOUT ============================ */
 #about {
-  background: #ffffff;
+  background: white;
 }
 
 #about .container {
@@ -341,7 +331,6 @@ nav.show div.icon-close {
 
 #about .image img {
   position: relative;
-  /* right: 2.93rem;   */
 }
 
 #about .image img,
@@ -354,8 +343,7 @@ nav.show div.icon-close {
   margin-right: 1.5rem;
 }
 
-/* ######################################################### SERVICES */
-
+/*====  SERVICES ============================ */
 .cards.grid {
   gap: 1.5rem;
 }
@@ -380,10 +368,9 @@ nav.show div.icon-close {
   margin-bottom: 0.75rem;
 }
 
-/* ######################################################### TESTIMONIALS */
-
+/*====  TESTIMONIALS ============================ */
 #testimonials {
-  background: #ffffff;
+  background: white;
 }
 
 #testimonials .container {
@@ -411,18 +398,17 @@ nav.show div.icon-close {
 }
 
 #testimonials blockquote p span {
-  font: 700 3rem serif;
-
+  font: 700 2.5rem serif;
   position: absolute;
-  top: -0.625rem;
+  top: -0.375rem;
   left: -1.875rem;
-
   color: var(--base-color);
 }
 
 #testimonials cite {
   display: flex;
   align-items: center;
+  font-style: normal;
 }
 
 #testimonials cite img {
@@ -433,8 +419,7 @@ nav.show div.icon-close {
   margin-right: 0.5rem;
 }
 
-/* SWIPER */
-
+/* swiper */
 .swiper-slide {
   height: auto;
   padding: 4rem 1rem;
@@ -449,8 +434,7 @@ nav.show div.icon-close {
   background: var(--base-color);
 }
 
-/* ######################################################### CONTACT */
-
+/*====  CONTACT ============================ */
 #contact .grid {
   gap: 4rem;
 }
@@ -478,10 +462,13 @@ nav.show div.icon-close {
   color: var(--base-color);
 }
 
-/* ######################################################### FOOTER */
-
+/*====  FOOTER ============================ */
 footer {
   background: var(--base-color);
+}
+
+footer.section {
+  padding: 4rem 0;
 }
 
 footer .logo {
@@ -500,19 +487,20 @@ footer i {
 }
 
 footer .social {
-  display: flex;
+  grid-auto-flow: column;
+  width: fit-content;
 }
 
-footer .social a{
-  transition: 0.5s;
+footer .social a {
+  transition: 0.3s;
+  display: inline-block;
 }
 
-footer .social a:hover{
-  transform: translateY(-7.5px);
+footer .social a:hover {
+  transform: translateY(-8px);
 }
 
-/* ######################################################### BACK TO TOP */
-
+/*====  BACK TO TOP ============================ */
 .back-to-top {
   background: var(--base-color);
   color: var(--text-color-light);
@@ -530,25 +518,146 @@ footer .social a:hover{
   visibility: hidden;
   opacity: 0;
 
-  transition: 0.5s;
+  transition: 0.3s;
   transform: translateY(100%);
 }
 
-.back-to-top.show{
+.back-to-top.show {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ######################################################### REPONSIVO */
-
+/*========= MEDIA QUERIES =========*/
 /* extra large devices: 1200 > */
+@media (min-width: 1200px) {
+  /* reusable classes */
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section {
+    padding: 10rem 0;
+  }
+
+  .section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    height: 3.125rem;
+  }
+
+  /* navigation */
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+
+  /* layout */
+  main {
+    margin-top: var(--header-height);
+  }
+
+  /* home */
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  #home .image {
+    order: 1;
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+
+  /* about */
+  #about .container {
+    margin: 0 auto;
+    grid-auto-flow: column;
+  }
+
+  /* services */
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* testimonials */
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* contact */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  #contact .text {
+    max-width: 25rem;
+  }
+
+  /* footer */
+  footer.section {
+    padding: 3.75rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo {
+    font-size: 2.25rem;
+  }
+}
+
 /* large devices: 1023 > */
+
 /* large devices: 992 > */
 @media (min-width: 992px) {
-
+  :root {
+    --title-font-size: 2.25rem;
+    --subtitle-font-size: 1.125rem;
+  }
 }
+
 /* medium devices: 767 > */
-
-
-
